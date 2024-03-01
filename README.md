@@ -8,7 +8,7 @@ To cite this work, and the related [paper](https://eprint.iacr.org/2024/367.pdf)
     author          = {Markku-Juhani O. Saarinen},
     title           = {Accelerating {SLH}-{DSA} by Two Orders of Magnitude with a Single Hash Unit},
     howpublished    = {Fifth {NIST} {PQC} Standardization Conference, April 10-12, 2024, Rockville, Maryland.
-                    Updated version, {IACR} ePrint 2024/367.},
+                    Updated version, {IACR} ePrint 2024/367},
     url             = {https://eprint.iacr.org/2024/367},
     year            = {2024}
 }
