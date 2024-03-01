@@ -2,14 +2,14 @@
 
 An accelerator / codesign for SLH-DSA ("Stateless Hash-Based Digital Signature Standard") as described in [FIPS 205 Initial Public Draft](https://doi.org/10.6028/NIST.FIPS.205.ipd) from August 2023.
 
-To cite this work, and the related [paper](https://eprint.iacr.org/2024/0000), please use:
+To cite this work, and the related [paper](https://eprint.iacr.org/2024/367.pdf), please use:
 ```
 @misc{sa24sloth,
     author          = {Markku-Juhani O. Saarinen},
     title           = {Accelerating {SLH}-{DSA} by Two Orders of Magnitude with a Single Hash Unit},
     howpublished    = {Fifth {NIST} {PQC} Standardization Conference, April 10-12, 2024, Rockville, Maryland.
-                    Updated version, {IACR} ePrint 2024/0000.},
-    url             = {https://eprint.iacr.org/2024/0000},
+                    Updated version, {IACR} ePrint 2024/367.},
+    url             = {https://eprint.iacr.org/2024/367},
     year            = {2024}
 }
 ```
