@@ -98,8 +98,8 @@ void delayms(uint32_t ms)
     while (i < ms) {
         asm volatile("wfi");
         t2 = get_clk_ticks();
-        while (t2 - t1 >= (TEST_CLK / 1000)) {
-            t1 += (TEST_CLK / 1000);
+        while (t2 - t1 >= (SLOTH_CLK / 1000)) {
+            t1 += (SLOTH_CLK / 1000);
             i++;
         }
     }

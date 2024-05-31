@@ -6,8 +6,8 @@
 #ifndef _SLOTH_MAP_H_
 #define _SLOTH_MAP_H_
 
-#ifndef TEST_CLK
-#define TEST_CLK            100000000
+#ifndef SLOTH_CLK
+#define SLOTH_CLK           100000000
 #endif
 
 //  check that synchronized with: test_top.sv

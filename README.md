@@ -2,15 +2,19 @@
 
 An accelerator / codesign for SLH-DSA ("Stateless Hash-Based Digital Signature Standard") as described in [FIPS 205 Initial Public Draft](https://doi.org/10.6028/NIST.FIPS.205.ipd) from August 2023.
 
-To cite this work, and the related [paper](https://eprint.iacr.org/2024/367.pdf), please use:
+To cite this work, and the related [CRYPTO 2024 Paper](https://eprint.iacr.org/2024/367), please use:
 ```
-@misc{sa24sloth,
-    author          = {Markku-Juhani O. Saarinen},
-    title           = {Accelerating {SLH}-{DSA} by Two Orders of Magnitude with a Single Hash Unit},
-    howpublished    = {Fifth {NIST} {PQC} Standardization Conference, April 10-12, 2024, Rockville, Maryland.
-                    Updated version, {IACR} ePrint 2024/367},
-    url             = {https://eprint.iacr.org/2024/367},
-    year            = {2024}
+@InProceedings{   Sa24,
+  author        = {Markku-Juhani O. Saarinen},
+  title         = {Accelerating {SLH}-{DSA} by Two Orders of Magnitude with a
+                  Single Hash Unit},
+  booktitle     = {Advances in Cryptology - {CRYPTO} 2024 - 44th Annual
+                  International Cryptology Conference, {CRYPTO} 2024, Santa
+                  Barbara, CA, USA, August 18-2, 2024, Proceedings},
+  note          = {Available as IACR ePrint Report 2024/367},
+  url           = {https://eprint.iacr.org/2024/367},
+  pages         = {to appear},
+  year          = {2024}
 }
 ```
 
@@ -62,44 +66,46 @@ make veri
 After a successful compilation the output should look something like this:
 ```
 ./_build/Vsim_tb
+[GPIO] 00 x          0
 
 [RESET]    ______        __  __ __
-          / __/ /  ___  / /_/ // /  SLotH Accelerator Test 2024/02
+          / __/ /  ___  / /_/ // /  SLotH Accelerator Test 2024/05
          _\ \/ /__/ _ \/ __/ _  /   SLH-DSA / FIPS 205 ipd
         /___/____/\___/\__/_//_/    markku-juhani.saarinen@tuni.fi
 
 [INFO]  === Basic health test ===
-[CLK]   778     sha256_compress()
+[CLK]   775     sha256_compress()
 [PASS]  sha256 ( chk= 55F39AFA )
-[CLK]   1460    sha512_compress()
+[CLK]   1462    sha512_compress()
 [PASS]  sha512 ( chk= 1F59A287 )
-[CLK]   1469    keccak_f1600()
+[CLK]   1467    keccak_f1600()
 [PASS]  shake256 ( chk= 07C97065 )
 
-[INFO]  === Timing / KAT ===
+[INFO]  === Testbench ===
 [INFO]  SLH-DSA-SHAKE-128f
 [INFO]  kat test count = 0
-[CLK]   SLH-DSA-SHAKE-128f 202180 slh_keygen()
+[CLK]   SLH-DSA-SHAKE-128f 204310 slh_keygen()
 [STK]   SLH-DSA-SHAKE-128f 3156 slh_keygen()
 [PASS]  sk ( chk= BCA6B2C3 )
-[CLK]   SLH-DSA-SHAKE-128f 4923932 slh_sign()
-[STK]   SLH-DSA-SHAKE-128f 3940 slh_sign()
+[CLK]   SLH-DSA-SHAKE-128f 4943111 slh_sign()
+[STK]   SLH-DSA-SHAKE-128f 3380 slh_sign()
 [PASS]  sm ( chk= C03DA016 )
-[CLK]   SLH-DSA-SHAKE-128f 438901 slh_verify()
+[CLK]   SLH-DSA-SHAKE-128f 434660 slh_verify()
 [STK]   SLH-DSA-SHAKE-128f 3284 slh_verify()
 [PASS]  slh_verify() flip bit = 12389
 [PASS]  All tests ok.
 
-You can press key. Press x to exit.
+UART Test. Press x to exit.
+GPIO 0xAA
 UART 0x78 x
 
 
 exit()
 
-[**TRAP**]    8145868
+[**TRAP**]    8392281
 - rtl/sim_tb.v:36: Verilog $finish
 ```
-The readout from this particular execution of SLH-DSA-SHAKE-128f is that KeyGen was 202180 cycles, signing was 4923932 cycles, and verification was 438901 cycles. Furthermore, the self-tests were a PASS; the output matched the Known Answer Tests. Modify the end of `test_bench.c` to have broader test behavior.
+The readout from this particular execution of SLH-DSA-SHAKE-128f is that KeyGen was 204310 cycles, signing was 4943111 cycles, and verification was 434660 cycles. Furthermore, the self-tests were a PASS; the output matched the Known Answer Tests. Modify the end of `test_bench.c` to have broader test behavior.
 
 
 ##  Some other targets

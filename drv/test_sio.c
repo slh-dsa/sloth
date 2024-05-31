@@ -47,8 +47,8 @@ int sio_getc()
 
         asm volatile("wfi");
 
-        if (i > 0 && (get_clk_ticks() - t) >= (TEST_CLK / 1000)) {
-            t += TEST_CLK / 1000;
+        if (i > 0 && (get_clk_ticks() - t) >= (SLOTH_CLK / 1000)) {
+            t += SLOTH_CLK / 1000;
             i--;
         }
     }

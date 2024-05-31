@@ -486,7 +486,7 @@ int test_bench()
     }
 #endif
 
-//	SLOTH
+//  SLOTH
 #endif
 
     return fail;

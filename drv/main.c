@@ -9,7 +9,7 @@
 const char main_hello[] =
 "\n[RESET]"
 "\t   ______        __  __ __\n"
-"\t  / __/ /  ___  / /_/ // /  SLotH Accelerator Test 2024/02\n"
+"\t  / __/ /  ___  / /_/ // /  SLotH Accelerator Test 2024/05\n"
 "\t _\\ \\/ /__/ _ \\/ __/ _  /   SLH-DSA / FIPS 205 ipd\n"
 "\t/___/____/\\___/\\__/_//_/    markku-juhani.saarinen@tuni.fi\n\n";
 

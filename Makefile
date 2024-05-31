@@ -96,7 +96,7 @@ synth:
 
 $(FW).elf:	$(OBJS)
 	$(XCHAIN)gcc $(LDFLAGS) $(CFLAGS)  $(OBJS)	-o $@ $(LIBS)
-	$(XCHAIN)size -t $(OBJS) 
+	$(XCHAIN)size -t $(OBJS)
 	$(XCHAIN)size -t $(FW).elf
 
 %.o: %.c $(CCONF_H)
@@ -133,7 +133,7 @@ $(BUILD):
 	mkdir -p $(BUILD)
 
 clean:
-	$(RM)	-f	$(FW).* $(CCONF_H) $(OBJS) $(VVP) 
+	$(RM)	-f	$(FW).* $(CCONF_H) $(OBJS) $(VVP)
 	$(RM)	-rf $(PROF) $(BUILD)
 	$(RM)	-f	*.jou *.log *.bit
 	cd slh && $(MAKE) clean
