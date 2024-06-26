@@ -55,8 +55,13 @@ fw.close()
 for rfn in lsc:
 	pfl=len(os.path.commonprefix([os.getcwd(), rfn]))
 	wfn = rfn[pfl:].replace("/","_");
+	try:
+		# Try to open the source file, if not possible skip it
+		fr = open(rfn, "r")
+	except:
+		print("[-] Skipping %s (not found)" % rfn)
+		continue
 	print("writing:", wfn)
-	fr = open(rfn, "r")
 	fw = open(wfn, "w")
 	ln = 0
 	for sf in fr:
