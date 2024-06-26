@@ -144,6 +144,7 @@ clean:
 	$(RM)	-f	$(FW).* $(CCONF_H) $(OBJS) $(VVP)
 	$(RM)	-rf $(PROF) $(BUILD)
 	$(RM)	-f	*.jou *.log *.bit
+	$(MAKE) -f Makefile.docker clean
 	cd slh && $(MAKE) clean
 	cd flow/yosys-syn && $(MAKE) clean
 

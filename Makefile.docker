@@ -1,0 +1,19 @@
+ifeq ($(DOCKER_FORCE_REBUILD),1)
+NOCACHE=--no-cache
+RECREATE=--force-recreate
+else
+NOCACHE=
+RECREATE=
+endif
+ifeq ($(DOCKER_VERBOSE),1)
+BUILDKIT_PROGRESS=plain
+endif
+
+DOCKER_PLATFORM=--platform linux/amd64
+
+all:
+	DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=$(BUILDKIT_PROGRESS) docker build --build-arg PLATFORMS="$(PLATFORMS)" --file Docker/Dockerfile -o type=local,dest=Docker/ .
+
+clean:
+	# Remove build artifacts
+	@rm -f Docker/docker_build.tar.gz
