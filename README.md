@@ -109,6 +109,16 @@ exit()
 ```
 The readout from this particular execution of SLH-DSA-SHAKE-128f is that KeyGen was 204310 cycles, signing was 4943111 cycles, and verification was 434660 cycles. Furthermore, the self-tests were a PASS; the output matched the Known Answer Tests. Modify the end of `test_bench.c` to have broader test behavior.
 
+##  Using Docker
+
+Alternatively, it is possible to use an Ubuntu based Docker container for the simulation (with preinstalled verilator and toolchain). Having Docker installed, simply execute:
+
+
+```
+DOCKER_VERBOSE=1 make -f Makefile.docker
+```
+
+This will put the compilation and profiling artifacts in the compressed `Docker/docker_build.tar.gz` file.
 
 ##  Some other targets
 
