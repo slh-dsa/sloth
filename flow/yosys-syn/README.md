@@ -1,4 +1,5 @@
 Copied from https://github.com/lowRISC/ibex/blob/master/syn/README.md on 2024-01-23 by mjos
+Added LICENSE file from that repo on 2024-09-23
 
 Minor changes related to paths, and `ibex_top` replaced by `sloth_top`. Also, SLotH does not require SystemVerilog conversion. 
 
