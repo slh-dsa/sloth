@@ -18,7 +18,15 @@ CCONF_H	?=	config.h
 XCHAIN	?= 	riscv64-unknown-elf-
 CFLAGS	= 	-O2 -Wall -g -mabi=ilp32 -march=rv32imc
 CFLAGS	+=	-include $(CCONF_H) -DNDEBUG
-LDFLAGS	= 	-Wl,-Bstatic,-T,flow/riscv.ld,--no-relax
+# If we use picolibc, adapt the flags.
+# NOTE: the local ld script mostly provides flash and RAM layout
+# (in our case flash starts at 0 and is in fact part of RAM)
+ifeq ($(USE_PICOLIBC),1)
+    CFLAGS      +=      -specs=picolibc.specs
+    LDFLAGS	= 	-Wl,-Bstatic,-T,flow/picolibc.ld,--no-relax
+else
+    LDFLAGS	= 	-Wl,-Bstatic,-T,flow/riscv.ld,--no-relax
+endif
 KATNUM	?=	10
 CFLAGS	+=	-DKATNUM=$(KATNUM)
 
@@ -136,6 +144,7 @@ clean:
 	$(RM)	-f	$(FW).* $(CCONF_H) $(OBJS) $(VVP)
 	$(RM)	-rf $(PROF) $(BUILD)
 	$(RM)	-f	*.jou *.log *.bit
+	$(MAKE) -f Makefile.docker clean
 	cd slh && $(MAKE) clean
 	cd flow/yosys-syn && $(MAKE) clean
 
