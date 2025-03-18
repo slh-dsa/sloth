@@ -19,13 +19,13 @@
     48      S256_MTOP   End of the data register block.
     64      S256_MSH2   Message block shifted by 2 bytes.
     120     S256_CTRL   Start of the control register block.
-    120     S256_TRIG   set to 0x01 to start Keccak,
+    120     S256_TRIG   set to 0x01 to start SHA2,
                         0x02 to start chain iteration,
                         0x03 for PRF + Chain.
     120     S256_STAT   Also a status register: reads nonzero if busy
     122     S256_SECN   Security parameter n in { 16, 24, 32 }.
     123     S256_CHNS   Set to "s" value to start F chaining op.
-                        Set to 0x80 just to perform padding for F.
+                        Set to 0x00 just to perform padding for F.
 */
 
 //  a memory mapped device with 32-bit interface
