@@ -53,11 +53,13 @@ See [slh/README.md](slh/README.md) for more information.
 
 As a prerequisite for simulation, you'll need:
 
-*   [Verilator](https://github.com/verilator/verilator) verilog simulator.
+*   [Verilator](https://github.com/verilator/verilator) verilog simulator. This might be packaged on some Linux distros.
 *   A RISC-V cross-compiler that supports bare-metal targets. You can build a suitable [riscv-gnu-toolchain](https://github.com/riscv/riscv-gnu-toolchain)
-with `./configure --enable-multilib` and `make newlib`.
+with `./configure --enable-multilib` and `make newlib`. Under some Linux based distros (such as Debian), it is possible to use the packaged
+`gcc-riscv64-unknown-elf` along with the packaged `picolibc-riscv64-unknown-elf`: note that in this case, you will have to export the `USE_PICOLIBC=1` environment
+variable when compiling: `USE_PICOLIBC=1 make veri` (this is due to some divergence between `newlib` and `picolibc` C standard libraries linking scripts).
 
-Both of these may be available as packages for Linux operating systems. The name of your toolchain is set in `XCHAIN` variable in the [Makefile](Makefile).
+The name of your toolchain is set in `XCHAIN` variable in the [Makefile](Makefile).
 
 To build and run a quick end-to-end test, try:
 ```
